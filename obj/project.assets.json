@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\DotNet_Curso\\MeuPrimeiroProjeto\\MeuPrimeiroProjeto.csproj",
+      "projectUniqueName": "C:\\DotNet_Curso\\Bank\\MeuPrimeiroProjeto.csproj",
       "projectName": "MeuPrimeiroProjeto",
-      "projectPath": "C:\\DotNet_Curso\\MeuPrimeiroProjeto\\MeuPrimeiroProjeto.csproj",
+      "projectPath": "C:\\DotNet_Curso\\Bank\\MeuPrimeiroProjeto.csproj",
       "packagesPath": "C:\\Users\\MICRO\\.nuget\\packages\\",
-      "outputPath": "C:\\DotNet_Curso\\MeuPrimeiroProjeto\\obj\\",
+      "outputPath": "C:\\DotNet_Curso\\Bank\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\MICRO\\AppData\\Roaming\\NuGet\\NuGet.Config"

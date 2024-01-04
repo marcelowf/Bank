@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QHX+7yqXToP0jrHDLqBF63Db5leA8INvvbZSoP0fe5WaiWIeFgnce7WFFOWpZ2xopHwud80ijkaqhebr518ekg==",
+  "dgSpecHash": "r7BKgrXo2mqsOO1llOlmo36dg5Ik1e1rgQv3zPrvaIfUgsNbUSd13Bz1sLU65gcb047AZKDlCDuhG8iW0bArzw==",
   "success": true,
-  "projectFilePath": "C:\\DotNet_Curso\\MeuPrimeiroProjeto\\MeuPrimeiroProjeto.csproj",
+  "projectFilePath": "C:\\DotNet_Curso\\Bank\\MeuPrimeiroProjeto.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

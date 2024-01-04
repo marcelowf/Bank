@@ -7,13 +7,20 @@ namespace MeuPrimeiroProjeto
     {
         static void Main(string[] args)
         {
-            Console.Write("Nome: ");
-            string nome = Console.ReadLine();
+            SytleFuntions func = new SytleFuntions();
 
-            Console.Write("Senha: ");
+            func.ColorFunction("Nome:", ConsoleColor.Blue);
+            string nome = Console.ReadLine();
+            
+            func.ColorFunction("Senha:", ConsoleColor.Blue);
             string senha = Console.ReadLine();
 
-            BankUser user1 = new BankUser(nome, senha, 0);
+            func.ColorFunction("Saldo:", ConsoleColor.Blue);
+            decimal saldo = Console.ReadLine();
+
+            BankUser user1 = new BankUser(nome, senha, saldo);
+            
+            //User Teste
             BankUser user2 = new BankUser("Pedro", "456", 1000);
 
             List<BankUser> usuarios = new List<BankUser>
@@ -35,49 +42,54 @@ namespace MeuPrimeiroProjeto
                         switch (escolha)
                         {
                             case 1:
-                                Console.Write("Digite o valor a ser sacado: ");
+                                func.ColorFunction("Digite o valor a ser sacado:", ConsoleColor.Yellow);
                                 if (decimal.TryParse(Console.ReadLine(), out decimal valorSacar))
                                     user1.Sacar(valorSacar);
                                 else
-                                    Console.WriteLine("Valor inválido.");
+                                    func.ColorFunction("Valor inválido.", ConsoleColor.Red);
                                 break;
+
                             case 2:
-                                Console.Write("Digite o valor a ser depositado: ");
+                                func.ColorFunction("Digite o valor a ser depositado:", ConsoleColor.Yellow);
                                 if (decimal.TryParse(Console.ReadLine(), out decimal valorDepositar))
                                     user1.Depositar(valorDepositar);
                                 else
-                                    Console.WriteLine("Valor inválido.");
+                                    func.ColorFunction("Valor inválido.", ConsoleColor.Red);
                                 break;
+
                             case 3:
-                                Console.Write("Digite o valor a ser transferido: ");
+                                func.ColorFunction("Digite o valor a ser transferido:", ConsoleColor.Yellow);
                                 if (decimal.TryParse(Console.ReadLine(), out decimal valorTransferir))
                                 {
-                                    Console.Write("Digite o nome do destinatário: ");
+                                    func.ColorFunction("Digite o nome do destinatário:", ConsoleColor.Yellow);
                                     string nomeDestinatario = Console.ReadLine();
                                     user1.Transferir(valorTransferir, EncontrarUsuarioPorNome(nomeDestinatario, usuarios));
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Valor inválido.");
+                                    func.ColorFunction("Valor inválido.", ConsoleColor.Red);
                                 }
                                 break;
+
                             case 4:
-                                Console.Write("Digite sua senha: ");
+                                func.ColorFunction("Digite sua senha: ", ConsoleColor.Yellow);
                                 string senhaConsole = Console.ReadLine();
                                 user1.ConsultarSaldo(senhaConsole);
                                 break;
+
                             case 5:
-                                Console.WriteLine("Saindo do programa.");
+                                func.ColorFunction("Saindo do programa.", ConsoleColor.Blue);
                                 continuar = false;
                                 break;
+
                             default:
-                                Console.WriteLine("Opção inválida.");
+                                func.ColorFunction("Opção inválida.", ConsoleColor.Red);
                                 break;
                         }
                     }
                     else
                     {
-                        Console.WriteLine("Escolha inválida.");
+                        func.ColorFunction("Escolha inválida.", ConsoleColor.Red);
                     }
                 }
                 catch (Exception ex)
@@ -90,78 +102,6 @@ namespace MeuPrimeiroProjeto
         static BankUser EncontrarUsuarioPorNome(string nome, List<BankUser> usuarios)
         {
             return usuarios.Find(u => u.Nome == nome);
-        }
-    }
-
-    class BankUser
-    {
-        private string nome;
-        private string senha;
-        private decimal saldo;
-
-        public BankUser(string nome, string senha, decimal saldo)
-        {
-            if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrWhiteSpace(senha))
-            {
-                throw new ArgumentException("Nenhum campo deve ser nulo.");
-            }
-            if (saldo < 0)
-            {
-                throw new Exception("Saldo não pode ser negativo.");
-            }
-            this.nome = nome;
-            this.senha = senha;
-            this.saldo = saldo;
-        }
-
-        public string Nome
-        {
-            get { return nome; }
-        }
-
-        public void Sacar(decimal valor)
-        {
-            if (valor > saldo)
-            {
-                throw new Exception("Valor maior que o saldo.");
-            }
-            this.saldo -= valor;
-            Console.WriteLine($"Saque de {valor} realizado com sucesso. Saldo restante: {saldo}");
-        }
-
-        public void Depositar(decimal valor)
-        {
-            if (valor < 0)
-            {
-                throw new Exception("Valor não pode ser negativo.");
-            }
-            this.saldo += valor;
-            Console.WriteLine($"Depósito de {valor} realizado com sucesso. Saldo atual: {saldo}");
-        }
-
-        public void ConsultarSaldo(string senhaConsole)
-        {
-            if (senha != senhaConsole)
-            {
-                throw new Exception("Senha incorreta.");
-            }
-            Console.WriteLine($"Saldo disponível: {saldo}");
-        }
-
-        public void Transferir(decimal valor, BankUser destino)
-        {
-            if (valor < 0)
-            {
-                throw new Exception("Valor não pode ser negativo.");
-            }
-            if (valor > saldo)
-            {
-                throw new Exception("Valor maior que o saldo.");
-            }
-
-            this.saldo -= valor;
-            destino.Depositar(valor);
-            Console.WriteLine($"Transferência de {valor} realizada com sucesso para {destino.nome}. Saldo restante: {saldo}");
         }
     }
 }
