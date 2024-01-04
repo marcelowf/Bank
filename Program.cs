@@ -16,7 +16,7 @@ namespace MeuPrimeiroProjeto
             string senha = Console.ReadLine();
 
             func.ColorFunction("Saldo:", ConsoleColor.Blue);
-            decimal saldo = Console.ReadLine();
+            decimal saldo = decimal.Parse(Console.ReadLine());
 
             BankUser user1 = new BankUser(nome, senha, saldo);
             
