@@ -4,7 +4,6 @@ namespace MeuPrimeiroProjeto
 {
     class BankUser
     {   
-        
         SytleFuntions func = new SytleFuntions();
         private string nome;
         private string senha;

@@ -66,9 +66,7 @@ namespace MeuPrimeiroProjeto
                                     user1.Transferir(valorTransferir, EncontrarUsuarioPorNome(nomeDestinatario, usuarios));
                                 }
                                 else
-                                {
                                     func.ColorFunction("Valor inválido.", ConsoleColor.Red);
-                                }
                                 break;
 
                             case 4:
